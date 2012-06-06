@@ -23,13 +23,19 @@
         
         CGRect tmp = self.frame; 
         tmp.size.width = _currentX + rightMargin; 
-        tmp.size.height = _currentY + bottomMargin;        
+        tmp.size.height = _currentY + bottomMargin;    
+                
+        self.frame = tmp;
+        
     } 
     
     if ( scrollable) {
         
         self.contentSize = _currentScrollableSize;         
-    }    
+    }  else {
+        
+        
+    }
 }
 
 -(void) appendView:(UIView*)view{
@@ -75,6 +81,13 @@
 -(void)scrollToView:(UIView*)v{
     
     [self scrollToView:v animated:NO]; 
+}
+
+-(void)removeAllSubviews{
+    
+    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)]; 
+    _currentX = leftMargin; 
+    _currentY = topMargin;
 }
 
 

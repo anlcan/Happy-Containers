@@ -22,7 +22,7 @@ typedef enum _ScrollableContainerType {
     CGFloat marginX; // margins for subviews horizontal
     CGFloat marginY; // margins for subviews vertical
     
-    CGFloat _currentY;     
+    CGFloat _currentY; // obviously not thread safe..    
     CGFloat _currentX;         
     CGSize _currentScrollableSize; 
     
@@ -30,14 +30,11 @@ typedef enum _ScrollableContainerType {
     CGFloat topMargin; 
     CGFloat rightMargin; 
     CGFloat bottomMargin;
-    
-    
-    
-    BOOL scrollable;
+        
+    BOOL scrollable; // if not expandable, is it scrollable. have little effect if it is expandable
     BOOL expandable; // does actual size(frame) expands with each subview 
     
-    ScrollableContainerType _type; 
-    
+    ScrollableContainerType _type;     
 }
 
 @property (nonatomic, readonly) ScrollableContainerType type;
@@ -54,7 +51,7 @@ typedef enum _ScrollableContainerType {
 
 
 
-
+-(void)removeAllSubviews; 
 -(void)appendView:(UIView*)v;
 
 -(void)scrollToView:(UIView*)v animated:(BOOL)animated; 

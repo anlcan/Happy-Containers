@@ -10,20 +10,33 @@
 
 @implementation VerticalContainer
 
+-(void)setup{
+
+    _type = VerticalScrollableContainer; 
+    expandable = NO; 
+    scrollable = NO; 
+    self.autoresizesSubviews = NO; 
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         
-        _type = VerticalScrollableContainer; 
-        expandable = NO; 
-        scrollable = NO; 
-        
-        self.autoresizesSubviews = NO; 
+        [self setup]; 
     }
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder]; 
+    if (self) {
+        [self setup]; 
+        
+    }
+    return self;
+}
 
 
 
